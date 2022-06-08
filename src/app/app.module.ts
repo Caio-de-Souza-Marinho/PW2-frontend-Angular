@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -25,7 +26,13 @@ registerLocaleData(localePt);
     ListarProdutosComponent,
     CadastrarProdutoComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, SharedModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    SharedModule,
+    HttpClientModule,
+  ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }],
   bootstrap: [AppComponent],
 })
