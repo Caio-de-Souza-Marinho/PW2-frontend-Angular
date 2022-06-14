@@ -17,6 +17,7 @@ import { LOCALE_ID } from '@angular/core';
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AtualizarProdutoComponent } from './components/produtos/atualizar-produto/atualizar-produto.component';
 
 registerLocaleData(localePt);
 
@@ -28,6 +29,7 @@ registerLocaleData(localePt);
     HomeComponent,
     ListarProdutosComponent,
     CadastrarProdutoComponent,
+    AtualizarProdutoComponent,
   ],
   imports: [
     BrowserModule,
