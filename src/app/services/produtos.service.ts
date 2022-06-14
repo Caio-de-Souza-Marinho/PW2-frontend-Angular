@@ -1,7 +1,7 @@
 import { IProduto } from './../model/IProduto.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { EMPTY, Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
@@ -14,6 +14,11 @@ export class ProdutosService {
 
   buscarTodos(): Observable<IProduto[]>{
     return this.http.get<IProduto[]>(this.URL);
+  }
+
+  exibirErro(e: any): Observable<any>{
+    this.exibirMensagem('Erro!!!', 'Não foi possível realizar a operação', 'toast-error');
+    return EMPTY;
   }
 
   exibirMensagem(titulo: string, mensagem: string, tipo: string): void {
