@@ -13,6 +13,13 @@ export class ProdutosService {
 
   constructor(private http: HttpClient, private toastr: ToastrService) {}
 
+  buscarPorId(id: number): Observable<IProduto> {
+    return this.http.get<IProduto>(`${this.URL}/${id}`).pipe(
+      map((retorno) => retorno),
+      catchError((erro) => this.exibirErro(erro))
+    );
+  }
+
   buscarTodos(): Observable<IProduto[]> {
     return this.http.get<IProduto[]>(this.URL).pipe(
       map((retorno) => retorno),
