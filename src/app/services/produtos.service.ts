@@ -13,15 +13,15 @@ export class ProdutosService {
 
   constructor(private http: HttpClient, private toastr: ToastrService) {}
 
-  buscarPorId(id: number): Observable<IProduto> {
-    return this.http.get<IProduto>(`${this.URL}/${id}`).pipe(
+  buscarTodos(): Observable<IProduto[]> {
+    return this.http.get<IProduto[]>(this.URL).pipe(
       map((retorno) => retorno),
       catchError((erro) => this.exibirErro(erro))
     );
   }
 
-  buscarTodos(): Observable<IProduto[]> {
-    return this.http.get<IProduto[]>(this.URL).pipe(
+  buscarPorId(id: number): Observable<IProduto> {
+    return this.http.get<IProduto>(`${this.URL}/${id}`).pipe(
       map((retorno) => retorno),
       catchError((erro) => this.exibirErro(erro))
     );
@@ -34,6 +34,12 @@ export class ProdutosService {
     );
   }
 
+  atualizar(produto: IProduto): Observable<IProduto> {
+    return this.http.put<IProduto>(`${this.URL}/${produto.id}`, produto).pipe(
+      map((retorno) => retorno),
+      catchError((erro) => this.exibirErro(erro))
+    );
+  }
 
   exibirErro(e: any): Observable<any> {
     this.exibirMensagem(
