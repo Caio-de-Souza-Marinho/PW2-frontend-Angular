@@ -1,3 +1,4 @@
+import { IProduto } from './../../../model/IProduto.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,18 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cadastrar-produto.component.css'],
 })
 export class CadastrarProdutoComponent implements OnInit {
-  nome: string = '';
-  validade: string = '';
-  preco: number = 0;
+
+  produto: IProduto = {
+    nome: '',
+    validade: new Date(),
+    precoProduto: 0
+  };
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  salvarProduto() : void {
-    console.log('Nome: ', this.nome);
-    console.log('Validade: ', this.validade);
-    console.log('Preco: ', this.preco);
-    alert('Salvo com sucesso!')
-  }
+
 }
