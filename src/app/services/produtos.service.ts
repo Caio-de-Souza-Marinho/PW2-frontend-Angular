@@ -20,6 +20,14 @@ export class ProdutosService {
     );
   }
 
+  cadastrar(produto: IProduto): Observable<IProduto> {
+    return this.http.post<IProduto>(this.URL, produto).pipe(
+      map((retorno) => retorno),
+      catchError((erro) => this.exibirErro(erro))
+    );
+  }
+
+
   exibirErro(e: any): Observable<any> {
     this.exibirMensagem(
       'Erro!!!',
