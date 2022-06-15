@@ -23,22 +23,20 @@ export class AtualizarProdutoComponent implements OnInit {
 
   ngOnInit(): void {
     const id = Number(this.activatedRoute.snapshot.paramMap.get('id'));
-    this.produtosService.buscarPorId(id).subscribe(retorno => {
+    this.produtosService.buscarPorId(id).subscribe((retorno) => {
       this.produto = retorno;
     });
   }
 
   salvarProduto(): void {
-    this.produtosService.cadastrar(this.produto).subscribe((retorno) => {
+    this.produtosService.atualizar(this.produto).subscribe((retorno) => {
       this.produto = retorno;
       this.produtosService.exibirMensagem(
         'Sistema',
-        `${this.produto.nome} foi cadastrado com sucesso. ID: ${this.produto.id}`,
+        `${this.produto.nome} foi atualizado com sucesso.`,
         'toast-success'
       );
       this.router.navigate(['/produtos']);
     });
   }
-
-
 }
