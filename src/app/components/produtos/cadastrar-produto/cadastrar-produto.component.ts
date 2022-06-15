@@ -17,6 +17,8 @@ export class CadastrarProdutoComponent implements OnInit {
 
   constructor(private produtosService: ProdutosService, private router: Router) {}
 
+  ngOnInit(): void {}
+
   salvarProduto(): void {
     this.produtosService.cadastrar(this.produto).subscribe(retorno => {
       this.produto = retorno;
@@ -29,5 +31,4 @@ export class CadastrarProdutoComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
 }
